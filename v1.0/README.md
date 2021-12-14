@@ -133,6 +133,7 @@ Currently there are: **8 Config Tags** available in config installer version 1.0
 Below is a list of all the config tags:
 
 NAME  | INFO
+---|---
 config-author  | This tag is used to show the name of the config creator.
 config-name  | This tag is used to show the name of the config.
 config-desc  | This tag is used to show the description of the config.
@@ -141,7 +142,6 @@ config-file-count  | This tag is used to show the file count for the config.
 config-activation  | This tag is used to control how a config is activated.
 config-deactivation  | This tag is used to control how a config is deactivated.
 config-ytvideo  | This tag is used to link to the channel of the config creator.
----|---
 
 
 Now i will be explaining the **CONFIG TAGS**  mentioned above.
@@ -271,9 +271,10 @@ The **config-activation** tag consists of **Sub Tags** this sub tags are tags th
 The **config-activation** tag consists of the following **Sub Tags**
 
 SUB TAG NAME  | SUB TAG DESCRIPTION
+---|---
 "file"  | This tag is used to select a file from the **Activate** folder.
 "to"  | This tag is used to specify a location where the selected file will be copied.
----|---
+
 
 Both the **file** and **to** sub tags work hand in hand with each other let's look at an example on how we can use them.
 
