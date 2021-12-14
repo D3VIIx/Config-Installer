@@ -11,8 +11,9 @@ To learn more about how to make your configs compatible with **Config Installer*
 ----
 
 VERSION NUMBER | LINK TO DOCUMENTATION
-  v1.0 | [Click Here](https://github.com/D3VIIx/Config-Installer/blob/main/v1.0/README.md)
 ---|---
+  v1.0 | [Click Here](https://github.com/D3VIIx/Config-Installer/blob/main/v1.0/README.md)
+
 
 
 
