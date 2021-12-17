@@ -126,9 +126,9 @@ You can also add spaces between them like below.
 
 Now let's add a **CONFIG TAG**, config tags are used to give hold informations about your config so that the **Config Installer** app can display those informations when your users want to install your configs.
 
-Currently there are: **8 Config Tags** available in config installer version 1.0, there is a possibility more config tags may be removed or added in the future.
+Currently there are: **10 Config Tags** available in config installer version 1.0, there is a possibility more config tags may be removed or added in the future.
 
-> **Note:** all 8 config tags must be added in your .ci config file and they should be valid otherwise your configs might not get installed.
+> **Note:** all 10 config tags must be added in your .ci config file and they should be valid and not empty otherwise your configs might not get installed.
 
 Below is a list of all the config tags:
 
@@ -142,6 +142,8 @@ config-file-count  | This tag is used to show the file count for the config.
 config-activation  | This tag is used to control how a config is activated.
 config-deactivation  | This tag is used to control how a config is deactivated.
 config-ytvideo  | This tag is used to link to the channel of the config creator.
+config-type  | This tag let's you specify if your config is for FF or FF Max
+config-version-limit  | This tag lets you specify which version of free fire your config is compatible with.
 
 
 Now i will be explaining the **CONFIG TAGS**  mentioned above.
@@ -205,7 +207,78 @@ You can use any of the examples below.
 ![Screenshot_20211211-191500](images/Screenshot_20211211-191500.png)
 
 ----
+### Update: Two new config tags added "config-type" and "config-version-limit"
+----
 
+
+```json
+"config-type": "xxx"
+```
+ This tag allows the use of two possible values which are listed below.
+ 
+ 1. **free-fire**
+ 2. **free-fire-max**
+
+If you use any other value besides the two values above then **Config Installer** app might display a error message.
+
+The first possible value for the  **config-type** tag is the **free-fire** value,this value is used to let **Config Installer** know that your config is only compatible with free fire. Once config installer see this then it will check the users phone to see if free fire is installed. If the user has free fire installed **Config Installer** will continue with the config installation or show an error if free fire is not found.
+
+**Example:**
+
+
+```json
+"config-type": "free-fire"
+```
+
+The next possible value for the **config-type** tag is **free-fire-max**, this value will tell **Config Installer** that your config is only compatible with free fire max,.
+
+**Example:**
+
+
+```json
+"config-type": "free-fire-max"
+```
+
+Since I am building a test config for free fire I will use free fire as the value of my **config-type** tag.
+
+![Screenshot_20211217-065947](images/Screenshot_20211217-065947.png)
+
+> **Note:** You can type out the values above in caps or mixed letter case but just make sure you spell the value correctly and do not add any spaces between them.
+
+
+----
+
+
+```json
+"config-version-limit": "xxx"
+```
+
+This tag is quite an interesting tag, but you might be wondering what the difference between this tag and the **config-version** tag is. 
+
+The **config-version** tag only applies to your config letting you and your users keep track of all your configs that they have installed easily.
+
+The **config-version-limit** on the other hand lets you specify which version of free fire or free fire max your config is compatible with, let's imagine you made a config for free fire v1.60.0 then all you need to do is enter it into the **xxx** section of the **config-version-limit** tag.
+
+**Example:**
+
+```json
+"config-version-limit": "1.60.0"
+```
+
+The benefits of this tag is that it helps you keep track of free fire updates, if free fire does any new updates then users won't be able to install that config anymore because it will not longer work for after free fire updates.
+
+#### How to find free fire or free fire max version code
+----
+Open your free fire, wait till it loads and get to the point where it tells you to tap anywhere on the screen to continue. Don't tap anything yet, look at the top left side of the screen you will see the version number there. Take a screenshot or write the number down, then minimize and type that same version number into your **config-version-limit** config tag.
+
+![Screenshot_20211217-065423](images/Screenshot_20211217-065423.png)
+
+
+![Screenshot_20211217-065718](images/Screenshot_20211217-065718.png)
+
+
+
+----
 
 ```json
 "config-file-count": "xxx"
@@ -242,6 +315,8 @@ See example below.
 
 ![Screenshot_20211213-173217](images/Screenshot_20211213-173217.png)
 
+----
+### Update: Please read the update info about the "config-activation" tag
 ----
 
 
@@ -349,8 +424,15 @@ Example:
 
 I will be removing the new addition because my test config only requires one file not two.
 
+----
 
+**Update:** You no longer need to add **com.dts.freefireth** in the **to** sub tag, you can commit it like in the image below. 
 
+Config installer will automatically add it for you based on the type of config you are making. It uses the **config-type** tag to determine that, if you use **"config-type": "free-fire"** it will automatically add **com.dts.freefireth** for you, and if you use **"config-type": "free-fire-max"** It automatically adds **com.dts.freefiremax** for you. So make sure you keep that in mind.
+
+![Screenshot_20211217-071941](images/Screenshot_20211217-071941.png)
+
+Remember to make the same changes to your **config deactivation** tag as well.
 
 ----
 
@@ -496,6 +578,8 @@ But I recommend you try creating yours, this helps you understand things better.
     "config-name": "Your Config Name Here",
     "config-desc": "Your Config Description Here\n\nThis Will Appear On A New Line.",
     "config-version": "Config Version Here Example: v1.0",
+    "config-type": "Your Config Type Here",
+    "config-version-limit": "Your Config FF Or FF Max Version Compatibility",
     "config-file-count": "1",
     "config-ytvideo": "Your Config YT Video ID Here Example: zGf9UE9kDSE",
     "config-activation": [
@@ -522,6 +606,8 @@ But I recommend you try creating yours, this helps you understand things better.
     "config-name": "Your Config Name Here",
     "config-desc": "Your Config Description Here\n\nThis Will Appear On A New Line.",
     "config-version": "Config Version Here Example: v1.0",
+    "config-type": "Your Config Type Here",
+    "config-version-limit": "Your Config FF or FF Max Version Compatibility",
     "config-file-count": "1",
     "config-ytvideo": "Your Config YT Video ID Here Example: zGf9UE9kDSE",
     "config-activation": [
